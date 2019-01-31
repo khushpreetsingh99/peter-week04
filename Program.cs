@@ -4,43 +4,64 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace ConsoleApp2
 {
     class Program
-    { 
-    class Village
     {
-        public static int numberofvillages = 0;
-        public Village nextvillage;
-        public Village previousvillage;
-        public string villagename;
-        public bool isAstrildehere = false; 
-
-        public Village() { Village.numberofvillages++; } 
-        
-        }
-    class Countryside
-    {
-        public Village Maple;
-        public Village Toronto;
-
-        public Village ajax;
-            public void MapInitializer()
-            {
-                Maple = new Village();
-                Maple.villagename = "Maple";
-                Maple.previousvillage = null;
-                Toronto = new Village();
-                Toronto.villagename = "Toronto";
-                Toronto.previousvillage = null;
-                ajax = new Village();
-                ajax.villagename = "Ajax";
-                ajax.nextvillage = null;
-                ajax.previousvillage = Toronto;
-                ajax.isAstrildehere = true;
-            }
-
+        static void Main(string[] Args)
+        {
+            countryside Ontario = new countryside();
+            Ontario.run();
         }
     }
-}
+    class Village
+    {
+        public static int numberOfVillage = 0;
+        public Village nextVillage;
+        public Village previousvillage;
+        public string villagename;
+        public bool isAstrildaHere = false;
+        public Village()
+        {
 
+            Village.numberOfVillage++;
+        }
+    }
+    class Countryside
+    {
+        public Village maple;
+        public Village toronto;
+        public Village ajax;
+        public Village head;
+        public Village tail;
+        public Village temp;
+
+        public void Run()
+        { 
+            this.MapInitializer();
+            public void MapInitializer()
+            {
+                maple = new Village();
+                maple.villagename = "maple";
+                maple.previousvillage = null;
+                maple.nextVillage = toronto;
+                maple.isAstrildaHere = true;
+                toronto = new Village();
+                toronto.previousvillage = maple;
+                toronto.villagename = "toronto";
+                toronto.nextVillage = ajax;
+                ajax = new Village();
+                ajax.villagename = "ajax";
+                ajax.nextVillage = null;
+                ajax.previousvillage = toronto;
+            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+            public void lookForAstrilda()
+            { head = maple;
+                if (head.isAstrildaHere)
+                {
+                    Console.WriteLine("yeah she is in + head.villagename");
+                }
+            }
+            }
+        }
+    
